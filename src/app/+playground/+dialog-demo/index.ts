@@ -1,0 +1,1 @@
+export { DialogDemoModule } from './dialog-demo.module'

@@ -1,0 +1,188 @@
+.otcgo-button {
+  background: transparent;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  color: $button-secondary-color;
+  position: relative;
+  height: $button-height;
+  margin: 0;
+  min-width: $button-min-width;
+  padding: 0 $button-padding;
+  display: inline-block;
+  @include typo-button();
+  overflow: hidden;
+  will-change: box-shadow;
+  transition: box-shadow 0.2s $animation-curve-fast-out-linear-in,
+  background-color 0.2s $animation-curve-default,
+  color 0.2s $animation-curve-default;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: $button-height;
+  vertical-align: middle;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+
+  &:focus:not(:active) {
+    background-color: $button-focus-color;
+  }
+
+  &:active {
+    background-color: $button-active-color;
+  }
+
+  &.otcgo-button--colored {
+    color: $button-primary-color-alt;
+
+    &:focus:not(:active) {
+      background-color: $button-focus-color-alt;
+    }
+  }
+}
+
+input.otcgo-button[type="submit"] {
+  -webkit-appearance: none;
+}
+
+.otcgo-button--raised {
+  background: $button-primary-color;
+  @include shadow-2dp();
+
+  &:active {
+    @include shadow-4dp();
+    background-color: $button-active-color;
+  }
+
+  &:focus:not(:active) {
+    @include focus-shadow();
+    background-color: $button-active-color;
+  }
+}
+
+.otcgo-button--w {
+  width: 100% !important;
+}
+
+.otcgo-button--lsc {
+  border: none;
+  border-radius: $button-lsc-height / 2;
+  height: $button-lsc-height;
+  margin: auto;
+  min-width: $button-lsc-min-width;
+  width: $button-fab-size;
+  padding: 0;
+  overflow: hidden;
+  background-color: unquote("rgb(#{$color-white})");
+  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  position: relative;
+  @include typo-button--lsc();
+
+  transition: width 0.2s $animation-curve-default;
+
+  &:active {
+    @include shadow-4dp();
+    background-color: $button-active-color;
+  }
+
+  &:focus:not(:active) {
+    @include focus-shadow();
+    background-color: $button-active-color;
+  }
+
+  &.otcgo-button--colored {
+    background: $button-fab-color-alt;
+    color: $button-fab-text-color-alt;
+
+    &:hover {
+      background-color: $button-fab-hover-color-alt;
+    }
+
+    &:focus:not(:active) {
+      background-color: $button-fab-active-color-alt;
+    }
+
+    &:active {
+      background-color: $button-fab-active-color-alt;
+    }
+
+    & .mdl-ripple {
+      background: $button-fab-ripple-color-alt;
+    }
+  }
+  // &.otcgo-button
+}
+
+.otcgo-button {
+  // Bump up specificity by using [disabled] twice.
+  &[disabled][disabled],
+  &.otcgo-button--disabled.otcgo-button--disabled {
+    color: $button-secondary-color-disabled;
+    cursor: default;
+    background-color: transparent;
+  }
+
+  &--fab {
+    // Bump up specificity by using [disabled] twice.
+    &[disabled][disabled],
+    &.otcgo-button--disabled.otcgo-button--disabled {
+      background-color: $button-primary-color-disabled;
+      color: $button-secondary-color-disabled;
+    }
+  }
+
+  &--raised {
+    // Bump up specificity by using [disabled] twice.
+    &[disabled][disabled],
+    &.otcgo-button--disabled.otcgo-button--disabled {
+      background-color: $button-primary-color-disabled;
+      color: $button-secondary-color-disabled;
+      box-shadow: none;
+    }
+  }
+
+  &--colored {
+    // Bump up specificity by using [disabled] twice.
+    &[disabled][disabled],
+    &.otcgo-button--disabled.otcgo-button--disabled {
+      color: $button-secondary-color-disabled;
+    }
+  }
+
+  &--lsc {
+    &[disabled][disabled],
+    &.otcgo-button--disabled.otcgo-button--disabled {
+      background-color: $button-secondary-color-disabled;
+    }
+  }
+
+  &--flat {
+    &[disabled][disabled],
+    &.otcgo-button--disabled.otcgo-button--disabled {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+  }
+}
+
+.otcgo-button--flat {
+  border: none;
+  color: white;
+  padding: 0 50px;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+
+  &:hover {
+    background: rgb(8, 156, 255);
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,263 @@
+.section {
+  position: relative;
+}
+
+.poster {
+  background-image: url("../../assets/img/otcgo-poster.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-align: center;
+
+  .poster-caption {
+    position: absolute;
+    top: calc(50% - 60px);
+    left: calc(50% - 500px);
+    color: white;
+    width: 1000px;
+
+    .poster-caption__title {
+      font-size: 30px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .poster-caption__subtitle {
+      font-size: 13pt;
+    }
+  }
+}
+
+.down-show {
+  position: absolute;
+  bottom: calc(10%);
+  left: calc(50% - 80px);
+  animation: indistinct 1s ease-in-out infinite;
+
+  .material-icons {
+    font-size: 100px;
+    color: white;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
+}
+
+.otcgo-layout-feature__container {
+  position: absolute;
+  z-index: 999999;
+  top: 90%;
+  height: 100px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+
+  &.otcgo-layout-feature--isScrollDown {
+    transition: top 0.9s cubic-bezier(0.32, 0.15, 0.58, 1.4);
+    top: 179%;
+  }
+
+  &.otcgo-layout-feature--isScrollUp {
+    transition: top 1s cubic-bezier(0.29, 1.01, 0.57, 1);
+  }
+
+  .otcgo-layout-feature {
+    width: 66.6666%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .otcgo-layout-feature__item {
+      width: 250px;
+      background-repeat: no-repeat;
+      background-position: 0;
+      background-size: 48px;
+      padding-left: 60px;
+      padding-top: 7px;
+      box-sizing: border-box;
+      text-align: left;
+      border-right: 2px solid rgba(0, 0, 0, 0.2);
+      height: 50px;
+
+      &:last-of-type {
+        border-right: none;
+      }
+
+      .title {
+        display: block;
+        font-size: 22px;
+        color: #000;
+        font-family: "方正大黑简体";
+        letter-spacing: 3.4px;
+      }
+
+      .subtitle {
+        display: block;
+        font-size: 12px;
+        color: #000;
+      }
+    }
+
+    .carefree-assets {
+      background-image: url("../../assets/img/carefree-assets.png");
+    }
+
+    .fast-order {
+      background-image: url("../../assets/img/fast-order.png");
+    }
+
+    .lower-fee {
+      background-image: url("../../assets/img/lower-fee.png");
+    }
+
+    .auto-bonus {
+      background-image: url("../../assets/img/auto-bonus.png");
+    }
+  }
+
+}
+
+.navigation-section {
+  background-color: #605d5c;
+
+  .otcgo-layout-navigation__container {
+    height: 750px;
+    background: radial-gradient(rgb(8, 156, 255), rgb(30, 86, 194));
+    color: white;
+
+    .otcgo-layout-navigation__gyorslapok {
+      display: flex;
+      height: 200px;
+      width: 100%;
+      background-color: white;
+      justify-content: center;
+
+      .otcgo-layout-navigation__tab-container {
+        width: 66.66666%;
+        display: flex;
+        align-items: center;
+      }
+
+      .otcgo-layout-navigation__tab {
+        margin-right: 110px;
+        text-align: center;
+        cursor: pointer;
+
+        img {
+          width: 90px;
+          height: 90px;
+        }
+
+        .text {
+          display: block;
+          margin-top: 15px;
+          color: rgb(8, 156, 255);
+          letter-spacing: 2px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .otcgo-layout-navigation__duce-card {
+      padding-top: 184px;
+      height: 550px;
+      box-sizing: border-box;
+      position: relative;
+
+      .duce-card__content {
+        padding-left: 140px;
+
+        & > * {
+          margin: 20px 0;
+        }
+
+        .title {
+          font-size: 30px;
+          line-height: 40px;
+          letter-spacing: 5px;
+        }
+
+        .text {
+          font-size: 16px;
+          line-height: 23px;
+          width: 370px;
+          letter-spacing: 2px;
+        }
+      }
+
+      .duce-card__tips {
+        position: absolute;
+        bottom: 0;
+        height: 73px;
+        width: 100%;
+        padding: 30px 325px;
+        background-color: #1c4074;
+        box-sizing: border-box;
+        font-size: 14px;
+        letter-spacing: 2px;
+
+        &::after {
+          content: '';
+          width: 0;
+          height: 0;
+          position: absolute;
+          bottom: -28px;
+          left: 350px;
+          border-top: 28px solid #1c4074;
+          z-index: 99;
+          border-left: 15px solid transparent;
+          border-right: 15px solid transparent;
+        }
+
+      }
+    }
+  }
+
+}
+
+.footer-section {
+  background-color: #605d5c;
+}
+
+@keyframes indistinct {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    bottom: 0;
+  }
+
+  50% {
+    top: 190%;
+  }
+
+  100% {
+    top: 179%;
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0%);
+    top: 90%;
+  }
+
+  50% {
+    transform: translateY(900%);
+  }
+
+  100% {
+    transform: translateY(862%);
+  }
+}

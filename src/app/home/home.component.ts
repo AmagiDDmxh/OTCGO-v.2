@@ -1,57 +1,34 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-
-import { AppState } from '../app.service';
-import { Title } from './title';
-import { XLargeDirective } from './x-large';
+import { Component, Input, OnInit } from "@angular/core";
+import { MnFullpageOptions, MnFullpageService } from "ngx-fullpage";
+import { Logger } from "../logger.service";
 
 @Component({
-  /**
-   * The selector is what angular internally uses
-   * for `document.querySelectorAll(selector)` in our index.html
-   * where, in this case, selector is the string 'home'.
-   */
-  selector: 'home',  // <home></home>
-  /**
-   * We need to tell Angular's Dependency Injection which providers are in our app.
-   */
-  providers: [
-    Title
-  ],
-  /**
-   * Our list of styles in our component. We may add more to compose many styles together.
-   */
-  styleUrls: [ './home.component.css' ],
-  /**
-   * Every Angular template is first compiled by the browser before Angular runs it's compiler.
-   */
+  selector: 'home',
+  styleUrls: ['./home.component.scss'],
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  /**
-   * Set our default values
-   */
-  public localState = { value: '' };
-  /**
-   * TypeScript public modifiers
-   */
+  public isScroll = false
+
+  @Input() public options: MnFullpageOptions = new MnFullpageOptions({
+    navigation: true,
+    keyboardScrolling: true
+  })
+
   constructor(
-    public appState: AppState,
-    public title: Title
+    public fullpageService: MnFullpageService,
+    private logger: Logger
   ) {}
 
   public ngOnInit() {
-    console.log('hello `Home` component');
-    /**
-     * this.title.getData().subscribe(data => this.data = data);
-     */
+    this.logger.log("On init")
   }
 
-  public submitState(value: string) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
+  public onLeave (i, n, d) {
+    if (i === 1 && d === 'down')
+      this.isScroll = true
+    else if (i === 2 && d === 'up')
+      this.isScroll = false
   }
+
 }

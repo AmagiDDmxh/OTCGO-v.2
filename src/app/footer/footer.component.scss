@@ -1,0 +1,99 @@
+.otcgo-layout-footer {
+  width: 100%;
+  padding: 0 120px;
+  height: 288px;
+  box-sizing: border-box;
+
+  &__container {
+    position: relative;
+    padding: 0 200px;
+    z-index: 99999;
+
+    .otcgo-layout-footer__content-wrapper {
+      display: flex;
+      align-items: center;
+
+      .otcgo-layout-footer__logo {
+        padding-right: 100px;
+        height: 84px;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid #c2c2c2;
+      }
+
+      .otcgo-layout-footer__links-container {
+        display: flex;
+        width: 80%;
+        letter-spacing: 1px;
+
+        & .otcgo-layout-footer__links-items {
+          & .otcgo-layout-footer__links-item-title {
+            font-size: 18px;
+            line-height: 30px;
+            color: #dedede;
+          }
+          & .otcgo-layout-footer__links-item {
+            font-size: 14px;
+            line-height: 30px;
+            color: #969696;
+          }
+          &.partnership {
+            padding-left: 60px;
+            padding-right: 80px;
+          }
+          &.about {
+            padding-right: 60px;
+          }
+          &.help {
+            padding-right: 80px;
+          }
+          &.contact {
+            padding-right: 60px;
+          }
+
+        }
+      }
+
+      .otcgo-layout__focus-us-container {
+        height: 150px;
+
+        .otcgo-layout__focus-us__title {
+          color: #aaa;
+          padding-left: 40px;
+        }
+
+        .otcgo-layout__focus-us__cards {
+          margin-top: 13px;
+          border-left: 1px solid #c2c2c2;
+          padding-left: 40px;
+          height: 84px;
+
+          .otcgo-layout__focus-us__card {
+            width: 194px;
+            height: 39px;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  &__shade {
+    box-sizing: border-box;
+    width: 56.25%;
+    border-left: 122px solid transparent;
+    border-bottom: 502px solid #575757;
+    position: absolute;
+    right: 0;
+    top: -72%;
+  }
+
+  &__copyright {
+    color: #c2c2c2;
+    font-size: 16px;
+    position: absolute;
+    right: 320px;
+    z-index: 99999;
+    bottom: 10px;
+  }
+}

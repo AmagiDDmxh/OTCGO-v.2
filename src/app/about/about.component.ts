@@ -1,8 +1,5 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'about',
@@ -37,6 +34,7 @@ export class AboutComponent implements OnInit {
          * Your resolved data from route.
          */
         this.localState = data.yourData;
+        console.log(`Hello subscribed data:`, data)
       });
 
     console.log('hello `About` component');

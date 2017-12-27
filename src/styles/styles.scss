@@ -1,19 +1,91 @@
 /* this file will be extracted to main dist folder and is imported in index.html */
 /* This file is for setting global styles  */
+// Variables and mixins
 @import 'variables';
+@import "mixins";
+// Resets and dependencies
+@import "resets/resets";
+@import "layout";
+@import "button";
+@import "material.min.css";
+@import "iconfont/material-icons.css";
 
-nav {
-  margin-top: 16px;
+body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
-nav a {
-  background-color: $nav-button-color;
-  color: white;
-  padding: 8px 16px;
-  margin: 8px;
-  vertical-align: middle;
-  line-height: 1.25;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px;
+.fp-auto-height.fp-section,
+.fp-auto-height .fp-slide,
+.fp-auto-height .fp-tableCell {
+  height: auto !important;
+}
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1000;
+}
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: .48;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.cdk-overlay-backdrop {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
+  opacity: 0;
+}
+
+.cdk-overlay-backdrop, .cdk-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+.mat-dialog-container, .mat-expansion-panel {
+  background: #fff;
+}
+
+.cdk-overlay-backdrop, .cdk-overlay-pane {
+  z-index: 1000;
+}
+
+.cdk-overlay-pane {
+  box-sizing: border-box;
+}
+
+.cdk-global-overlay-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+}
+
+.cdk-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }

@@ -6,18 +6,34 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "noUnusedParameters": true,
     "sourceMap": true,
     "noEmit": true,
     "noEmitHelpers": true,
     "importHelpers": true,
     "strictNullChecks": false,
+    "skipLibCheck": true,
     "lib": [
       "dom",
       "es6"
     ],
     "baseUrl": ".",
     "paths": {
-      "@angular/*": ["node_modules/@angular/*"]
+      "@angular/*": [
+        "node_modules/@angular/*"
+      ],
+      "@otcgo/cdk/*": [
+        "./src/cdk/*"
+      ],
+      "@otcgo/cdk": [
+        "./src/cdk"
+      ],
+      "@otcgo/component/*": [
+        "./src/component/*"
+      ],
+      "@otcgo/component": [
+        "./src/component"
+      ]
     },
     "typeRoots": [
       "node_modules/@types"

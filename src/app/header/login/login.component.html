@@ -1,0 +1,59 @@
+<form class="otcgo-login__container" #login="ngForm">
+  <div class="otcgo-login__title">登陆离线钱包</div>
+  <div
+      class="otcgo-login__content otcgo-login__file-drop"
+      ng2FileDrop
+      [ngClass]="{'otcgo-login__file-drop--over': hasDropZoneOver}"
+      (fileOver)="fileOverBase($event)"
+      (onFileDrop)="dropped($event)"
+      [uploader]="uploader">
+
+    <div class="otcgo-login__file">
+      <input
+          ngModel
+          name="fileName"
+          #fileNameField="ngModel"
+          [value]="filename"
+          placeholder="将钱包文件拖拽到此处"
+          class="otcgo-login__file-input"
+          type="text"
+          readonly>
+      <input
+          ngModel
+          name="file"
+          #file
+          (change)="readFile(file.files[0], fileNameField)"
+          accept="application/json, .json"
+          type="file"
+          class="otcgo-login__file-addon"
+          required>
+    </div>
+
+    <div class="otcgo-login__pws">
+      <input
+          ngModel
+          name="pwsi"
+          #pwsi="ngModel"
+          [value]="pws"
+          (input)="inputPws(pwsi.value)"
+          type="password"
+          class="otcgo-login__pws-input"
+          placeholder="输入钱包密码"
+          required>
+    </div>
+
+    <div class="otcgo-login__button-container">
+      <button
+          class="otcgo-login__button otcgo-button otcgo-button--flat"
+          [class.otcgo-button--disabled]="!login.valid"
+          [disabled]="!login.valid">登陆
+      </button>
+    </div>
+
+    <a class="otcgo-login__tip" (click)="openCreateWallet()">
+      {{ login.value | json }}
+    </a>
+
+  </div>
+
+</form>

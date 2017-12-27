@@ -1,38 +1,39 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
+import { ApplicationRef, NgModule } from "@angular/core";
 import {
-  NgModule,
-  ApplicationRef
-} from '@angular/core';
-import {
-  removeNgStyles,
+  createInputTransfer,
   createNewHosts,
-  createInputTransfer
-} from '@angularclass/hmr';
-import {
-  RouterModule,
-  PreloadAllModules
-} from '@angular/router';
+  removeNgStyles
+} from "@angularclass/hmr";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FileUploadModule } from "ng2-file-upload";
+import { MnFullpageModule } from "ngx-fullpage";
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import { ENV_PROVIDERS } from "./environment";
+import { ROUTES } from "./app.routes";
 // App is our top level component
-import { AppComponent } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
+import { AppComponent } from "./app.component";
+import { APP_RESOLVER_PROVIDERS } from "./app.resolver";
+import { AppState, InternalStateType } from "./app.service";
+import { Logger } from "./logger.service";
+import { HomeComponent } from "./home";
+import { AboutComponent } from "./about";
+import { HeaderComponent } from "./header";
+import { FooterComponent } from "./footer/footer.component";
+import { NoContentComponent } from "./no-content";
+import { XLargeDirective } from "./home/x-large";
 
-import '../styles/styles.scss';
-import '../styles/headings.css';
+import "../styles/styles.scss";
+import { LoaderComponent } from "./loader/loader.component";
+import { MaterialModule } from "./material.module";
+import { LoginComponent } from "./header/login";
+import { LayoutModule } from "@angular/cdk/layout";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -46,6 +47,14 @@ type StoreType = {
   disposeOldHosts: () => void
 };
 
+const ROUTE: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+];
+
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
@@ -55,17 +64,25 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     HomeComponent,
+    HeaderComponent,
+    LoginComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    FooterComponent,
+    LoaderComponent
   ],
   /**
    * Import Angular's modules.
    */
   imports: [
+    MaterialModule,
+    LayoutModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    FileUploadModule,
+    MnFullpageModule.forRoot(),
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
@@ -76,7 +93,12 @@ type StoreType = {
    */
   providers: [
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    Logger
+  ],
+
+  entryComponents: [
+    LoginComponent
   ]
 })
 export class AppModule {

@@ -48,9 +48,9 @@ module.exports = function (options) {
   return {
 
     /**
-     * Cache generated modules and chunks to improve performance for multiple incremental builds.
-     * This is enabled by default in watch mode.
-     * You can pass false to disable it.
+     * Cache generated modules and chunks to improve performance for multiple
+     * incremental builds. This is enabled by default in watch mode. You can
+     * pass false to disable it.
      *
      * See: http://webpack.github.io/docs/configuration.html#cache
      */
@@ -80,7 +80,8 @@ module.exports = function (options) {
       /**
        * An array of extensions that should be used to resolve modules.
        *
-       * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+       * See:
+       * http://webpack.github.io/docs/configuration.html#resolve-extensions
        */
       extensions: ['.ts', '.js', '.json'],
 
@@ -103,11 +104,12 @@ module.exports = function (options) {
         /**
          * Typescript loader support for .ts
          *
-         * Component Template/Style integration using `angular2-template-loader`
+         * Component Template/Style integration using
+         * `angular2-template-loader`
          * Angular 2 lazy loading (async routes) via `ng-router-loader`
          *
-         * `ng-router-loader` expects vanilla JavaScript code, not TypeScript code. This is why the
-         * order of the loader matter.
+         * `ng-router-loader` expects vanilla JavaScript code, not TypeScript
+         * code. This is why the order of the loader matter.
          *
          * See: https://github.com/s-panferov/awesome-typescript-loader
          * See: https://github.com/TheLarkInn/angular2-template-loader
@@ -118,7 +120,8 @@ module.exports = function (options) {
           use: [
             {
               /**
-               *  MAKE SURE TO CHAIN VANILLA JS CODE, I.E. TS COMPILATION OUTPUT.
+               *  MAKE SURE TO CHAIN VANILLA JS CODE, I.E. TS COMPILATION
+               * OUTPUT.
                */
               loader: 'ng-router-loader',
               options: {
@@ -148,8 +151,8 @@ module.exports = function (options) {
         },
 
         /**
-         * To string and css loader support for *.css files (from Angular components)
-         * Returns file content as string
+         * To string and css loader support for *.css files (from Angular
+         * components) Returns file content as string
          *
          */
         {
@@ -159,8 +162,8 @@ module.exports = function (options) {
         },
 
         /**
-         * To string and sass loader support for *.scss files (from Angular components)
-         * Returns compiled css content as string
+         * To string and sass loader support for *.scss files (from Angular
+         * components) Returns compiled css content as string
          *
          */
         {
@@ -218,9 +221,11 @@ module.exports = function (options) {
 
       /**
        * Plugin: ForkCheckerPlugin
-       * Description: Do type checking in a separate process, so webpack doesn't need to wait.
+       * Description: Do type checking in a separate process, so webpack
+       * doesn't need to wait.
        *
-       * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
+       * See:
+       * https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
        */
       new CheckerPlugin(),
       /**
@@ -228,7 +233,8 @@ module.exports = function (options) {
        * Description: Shares common code between the pages.
        * It identifies common modules and put them into a commons chunk.
        *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
+       * See:
+       * https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
        * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
        */
       new CommonsChunkPlugin({
@@ -258,7 +264,8 @@ module.exports = function (options) {
        * Plugin: ContextReplacementPlugin
        * Description: Provides context to Angular's use of System.import
        *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
+       * See:
+       * https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
        * See: https://github.com/angular/angular/issues/11580
        */
       new ContextReplacementPlugin(
@@ -345,12 +352,15 @@ module.exports = function (options) {
        * Plugin: HtmlElementsPlugin
        * Description: Generate html tags based on javascript maps.
        *
-       * If a publicPath is set in the webpack output configuration, it will be automatically added to
-       * href attributes, you can disable that by adding a "=href": false property.
-       * You can also enable it to other attribute by settings "=attName": true.
+       * If a publicPath is set in the webpack output configuration, it will be
+       * automatically added to href attributes, you can disable that by adding
+       * a "=href": false property. You can also enable it to other attribute
+       * by settings "=attName": true.
        *
-       * The configuration supplied is map between a location (key) and an element definition object (value)
-       * The location (key) is then exported to the template under then htmlElements property in webpack configuration.
+       * The configuration supplied is map between a location (key) and an
+       * element definition object (value) The location (key) is then exported
+       * to the template under then htmlElements property in webpack
+       * configuration.
        *
        * Example:
        *  Adding this plugin configuration
@@ -377,7 +387,8 @@ module.exports = function (options) {
       new ngcWebpack.NgcWebpackPlugin({
         /**
          * If false the plugin is a ghost, it will not perform any action.
-         * This property can be used to trigger AOT on/off depending on your build target (prod, staging etc...)
+         * This property can be used to trigger AOT on/off depending on your
+         * build target (prod, staging etc...)
          *
          * The state can not change after initializing the plugin.
          * @default true
@@ -393,6 +404,12 @@ module.exports = function (options) {
        * https://github.com/szrenwei/inline-manifest-webpack-plugin
        */
       new InlineManifestWebpackPlugin(),
+
+      new webpack.ProvidePlugin({
+                                  jQuery: 'jquery',
+                                  jquery: 'jquery',
+                                  $: 'jquery'
+                                })
     ],
 
     /**

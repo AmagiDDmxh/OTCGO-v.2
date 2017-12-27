@@ -5,19 +5,35 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "noEmit": true,
     "noEmitHelpers": true,
     "importHelpers": true,
     "strictNullChecks": false,
+    "skipLibCheck": true,
     "lib": [
       "es2015",
       "dom"
     ],
     "baseUrl": ".",
     "paths": {
-      "@angular/*": ["node_modules/@angular/*"]
+      "@angular/*": [
+        "node_modules/@angular/*"
+      ],
+      "Src/*": [
+        "src/*"
+      ],
+      "@otcgo/cdk": [
+        "src/cdk/public-api.ts"
+      ],
+      "@otcgo/component/*": [
+        "src/component/*"
+      ],
+      "@otcgo/component": [
+        "src/component/public-api.ts"
+      ]
     },
     "typeRoots": [
       "node_modules/@types"
